@@ -133,39 +133,39 @@ console.log(FordClimate)
 //? - Override: Üst metodla aynı isim ve yapıda yeni bir method yazma. (ezme / iptal etme / önceliği alma)
 //? - Overload: Üst metodla aynı isimde ama farklı yapıda yeni bir method yazma. (her ikisi de aynı anda aktif.) (JS Overload desteklemez.)
 
-class Vehicle {
+// class Vehicle {
 
-    vehicleIsActive = false
+//     vehicleIsActive = false
 
-    constructor (vehicleType) {
-        this.vehicleType = vehicleType
-    }
+//     constructor (vehicleType) {
+//         this.vehicleType = vehicleType
+//     }
 
-}
+// }
 
-class Car extends Vehicle { // Inheritance
+// class Car extends Vehicle { // Inheritance
 
-    isRunning = false
+//     isRunning = false
 
-    constructor(brand, model, year, vehicleType = 'Car') {
-        super(vehicleType)
-        this.brand = brand
-        this.model = model
-        this.year = year
-    }
+//     constructor(brand, model, year, vehicleType = 'Car') {
+//         super(vehicleType)
+//         this.brand = brand
+//         this.model = model
+//         this.year = year
+//     }
 
-    runEngine(param1) {
-        this.isRunning = true
-        return 'Motor Çalıştı'
-    }
+//     runEngine(param1) {
+//         this.isRunning = true
+//         return 'Motor Çalıştı'
+//     }
 
- //? Override: Parent class'daki metodun aynen yeniden yazılabilmesi.
-    //? Üstteki getDetails yerine bu çalışacak:
-    getDetails() {
-        console.log('Car içindeki getDetails çalıştı.')
-        return super.getDetails()
-        // return this.brand
-    }
+//  //? Override: Parent class'daki metodun aynen yeniden yazılabilmesi.
+//     //? Üstteki getDetails yerine bu çalışacak:
+//     getDetails() {
+//         console.log('Car içindeki getDetails çalıştı.')
+//         return super.getDetails()
+//         // return this.brand
+//     }
 
     //? Overload: Üstteki methodun aynı isim ama farklı parametre adet/tip ile yeniden tanımlanması.
     //? JS Desteklemez. TypeScript destekler.
@@ -174,11 +174,11 @@ class Car extends Vehicle { // Inheritance
     //     return this
     // }
 
-}
+// }
 
-const Ford = new Car('Ford', 'Mustang', 1967, 'Car')
-console.log(Ford)
-console.log(Ford.getDetails())
+// const Ford = new Car('Ford', 'Mustang', 1967, 'Car')
+// console.log(Ford)
+// console.log(Ford.getDetails())
 
 
 /* ------------------------------------------------------- *
@@ -252,48 +252,48 @@ console.log(Ford.getDetails())
 //? "STATIC" KEYWORD: Class'dan direkt erişim. (Instance erişemez.)
 
 
-class Car {
+// class Car {
 
-    isRunning = false
-    #price = 999
+//     isRunning = false
+//     #price = 999
 
-    constructor(brand, model, year, vehicleType = 'Car') {
-        this.brand = brand
-        this.model = model
-        this.year = year
-    }
+//     constructor(brand, model, year, vehicleType = 'Car') {
+//         this.brand = brand
+//         this.model = model
+//         this.year = year
+//     }
 
-    runEngine(param1) {
-        this.isRunning = true
-        return 'Motor Çalıştı'
-    }
+//     runEngine(param1) {
+//         this.isRunning = true
+//         return 'Motor Çalıştı'
+//     }
     
-    getDetails() { // getter method
-        console.log('Car içindeki getDetails çalıştı.')
-        return super.getDetails()
-    }
+//     getDetails() { // getter method
+//         console.log('Car içindeki getDetails çalıştı.')
+//         return super.getDetails()
+//     }
 
-    get getPrice() {
-        console.log('Fiyat görüntülendi.')
-        return this.#price
-    }
+//     get getPrice() {
+//         console.log('Fiyat görüntülendi.')
+//         return this.#price
+//     }
 
-    set setPrice(newPrice) {
-        console.log('Fiyat güncellendi.')
-        this.#price = newPrice
-        return this.#price
-    }
+//     set setPrice(newPrice) {
+//         console.log('Fiyat güncellendi.')
+//         this.#price = newPrice
+//         return this.#price
+//     }
 
-    //? Direkt class'tan erişmek için "static" keyword kullanılabilir.
-    //? "static" ile tanımlanmış değere instance'dan erişemeyiz.
-    static staticProp = 'static-value'
-    static staticMethod() {
-        return 'static-method'
-    }
+//     //? Direkt class'tan erişmek için "static" keyword kullanılabilir.
+//     //? "static" ile tanımlanmış değere instance'dan erişemeyiz.
+//     static staticProp = 'static-value'
+//     static staticMethod() {
+//         return 'static-method'
+//     }
 
-}
+// }
 
-const Ford = new Car('Ford', 'Mustang', 1967, 'Car')
+// const Ford = new Car('Ford', 'Mustang', 1967, 'Car')
 
 // console.log(Ford.price) // undefined
 // console.log(Ford.getPrice) // getter  metodlar property gibi çağrılır.
@@ -301,8 +301,8 @@ const Ford = new Car('Ford', 'Mustang', 1967, 'Car')
 // // console.log(Ford.setPrice(2000)) // setter methodlar artık bir normal method gibi çalışmaz.
 // console.log(Ford.getPrice)
 
-console.log(Car.staticProp) // Direkt class'tan erişim.
-console.log(Car.staticMethod())
+// console.log(Car.staticProp) // Direkt class'tan erişim.
+// console.log(Car.staticMethod())
 // console.log(Ford.staticProp) // Instance erişemez. (hata verir)
 // console.log(Ford.staticMethod())
 
