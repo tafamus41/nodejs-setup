@@ -72,7 +72,8 @@ app.get('/', (req, res) => {
 
 })
 
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
+//? Multiple Middlewares:
 
 app.get('/', (req, res, next) => {
 
@@ -96,6 +97,14 @@ app.get('/', (req, res, next) => {
 
     req.message4 = 'middleware-4 started'
     next()
+    // res.send({
+    //     message1: req.message1,
+    //     message2: req.message2,
+    //     message3: req.message3,
+    //     message4: req.message4,
+    //     message5: req.message5,
+    //     message: 'Middleware-4 output'
+    // })
     
 })
 app.get('/', (req, res, next) => {
@@ -112,15 +121,82 @@ app.get('/', (req, res) => {
         message3: req.message3,
         message4: req.message4,
         message5: req.message5,
+        message: 'Finished'
     })
+    
+})
+
+/* ------------------------------------------------------- *
+
+const middleFunc1 = (req, res, next) => {
+
+    console.log('middleFunc1 run.')
+    req.message1 = 'middleFunc1 run.'
+    // next()
+    next('route') // Bir sonraki path-route'a geç (bir tane atla)
+
+}
+
+const middleFunc2 = (req, res, next) => {
+
+    console.log('middleFunc2 run.')
+    req.message2 = 'middleFunc2 run.'
     next()
+
+}
+
+// Use Middlewares:
+// app.use('/home', middleFunc1)
+// app.use(middleFunc1) // URL yazılmazsa tümü için geçerli olur.
+// app.use(middleFunc2)
+
+// Alternative
+// app.use(middleFunc1, middleFunc2)
+
+// Alternative
+// app.use([middleFunc2, middleFunc1]) // all method (recommended)
+// app.get('/home', [middleFunc2, middleFunc1]) // get method (url must be)
+
+app.get('/home', [middleFunc1, middleFunc2], (req, res) => {
+
+    res.send({
+        message1: req.message1,
+        message2: req.message2,
+        message: 'Finished'
+    })
+    
+})
+
+app.get('/home', (req, res) => {
+
+    res.send({
+        message1: req.message1,
+        message2: req.message2,
+        message: 'next.Route - Finished'
+    })
+    
+})
+
+/* ------------------------------------------------------- */
+
+// const middleFuncs = require('./middlewares/')
+// app.use(middleFuncs)
+
+// const [ middleFunc1, middleFunc2 ] = require('./middlewares/')
+const { middleFunc1, middleFunc2 } = require('./middlewares/')
+// app.use(middleFunc1, middleFunc2)
+
+app.get('/', middleFunc1, middleFunc2, (req, res) => {
+
+    res.send({
+        message1: req.message1,
+        message2: req.message2,
+        message: 'Finished'
+    })
     
 })
 
 
-
-/* ------------------------------------------------------- */
-/* ------------------------------------------------------- */
 /* ------------------------------------------------------- */
 /* ------------------------------------------------------- */
 /* ------------------------------------------------------- */
