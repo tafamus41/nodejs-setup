@@ -2,15 +2,15 @@
 /* -------------------------------------------------------
     EXPRESSJS - ERROR MANAGEMENT
 ------------------------------------------------------- */
-require("express-async-errors");
+// require("express-async-errors");
 const express = require("express");
-const { StatusCodes } = require("http-status-codes");
+// const { StatusCodes } = require("http-status-codes");
 const app = express();
 
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
 const HOST = process.env.HOST;
-/* ------------------------------------------------------- 
+/* -------------------------------------------------------*/
 //!olması gereken
 app.get("/user/:id?", function (req, res) {
   res.status(200).send({ userId: 1, userName: "John" });
@@ -68,7 +68,7 @@ app.get("/user/:id?", function (req, res, next) {
     next(error);
   }
 });
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 class CustomError extends Error {
   name = "Custom Error";
   statusCode = StatusCodes.INTERNAL_SERVER_ERROR;
@@ -85,7 +85,7 @@ class BadRequestError extends Error {
   }
 }
 
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 function asyncSample() {
   return new Promise((resolve, reject) => {
     reject(new CustomError("Asenkron işlem sırasında bir hata oluştu", 400));
@@ -107,14 +107,14 @@ app.get("/user/:id?", async function (req, res, next) {
     next(error);
   }
 });
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 //! express-async-error sayesinde error handler artık async hataları yakalayabilir
 app.get("/user/:id?", async function (req, res) {
   await asyncSample();
 
   res.send({ userId: 2, userName: "John" });
 });
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 //! 21 console sınıfının methodları
 console.log();
 console.info();
@@ -137,7 +137,7 @@ console.time("Zamanlayıcı");
 for (let i = 0; i < 1000000; i++) {} // Yoğun işlem
 console.timeEnd("Zamanlayıcı"); //! 21 console sınıfının methodları
 
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 app.use("*", function (req, res) {
   res.status(404).send("The route is not found");
 });
