@@ -10,25 +10,26 @@ const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
 const HOST = process.env.HOST;
-/* -------------------------------------------------------*/
+/* -------------------------------------------------------*
 //!olması gereken
 app.get("/user/:id?", function (req, res) {
   res.status(200).send({ userId: 1, userName: "John" });
 });
-/* ------------------------------------------------------- 
+/* -------------------------------------------------------*
 //! iki farklı send
 app.get("/user/:id?", function (req, res) {
+  res.status(200).send({ userId: 2, userName: "Memati" });
   res.status(200).send({ userId: 1, userName: "John" });
-  res.status(200).send({ userId: 2, userName: "John" });
+  
 });
-/* ------------------------------------------------------- 
+/* -------------------------------------------------------*
 //! default hata çıktısı
 app.get("/user/:id?", function (req, res) {
   req.params.id.toString();
   res.send({ userId: 2, userName: "John" });
 });
 
-/* ------------------------------------------------------- 
+/* -------------------------------------------------------*/
 //! throw Error()
 app.get("/user/:id?", function (req, res) {
   throw Error("Hata oluştu");
@@ -137,10 +138,11 @@ console.time("Zamanlayıcı");
 for (let i = 0; i < 1000000; i++) {} // Yoğun işlem
 console.timeEnd("Zamanlayıcı"); //! 21 console sınıfının methodları
 
-/* ------------------------------------------------------- *
+/* ------------------------------------------------------- */
 app.use("*", function (req, res) {
   res.status(404).send("The route is not found");
 });
+/* ------------------------------------------------------- *
 const errorHandlerFunction = (err, req, res, next) => {
   // console.log(req.statusCode);
   // console.log(res.statusCode);
