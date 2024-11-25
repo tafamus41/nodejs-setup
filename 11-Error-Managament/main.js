@@ -49,7 +49,7 @@ app.get("/user/:id?", function (req, res) {
     res.status(400).send({ isError: true, message: "id must be string" });
   }
 });
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 app.get("/user/:id?", function (req, res, next) {
   // req.statusCode = 400;
   res.statusCode = 400;
@@ -60,7 +60,7 @@ app.get("/user/:id?", function (req, res, next) {
   res.send({ userId: 2, userName: "John" });
 });
 
-/* ------------------------------------------------------- 
+/* ------------------------------------------------------- */
 app.get("/user/:id?", function (req, res, next) {
   // res.statusCode = 400;
   try {
@@ -145,7 +145,7 @@ console.timeEnd("Zamanlayıcı"); //! 21 console sınıfının methodları
 app.use("*", function (req, res) {
   res.status(404).send("The route is not found");
 });
-/* ------------------------------------------------------- *
+/* ------------------------------------------------------- */
 const errorHandlerFunction = (err, req, res, next) => {
   // console.log(req.statusCode);
   // console.log(res.statusCode);
@@ -161,7 +161,7 @@ const errorHandlerFunction = (err, req, res, next) => {
   });
 };
 /* ------------------------------------------------------- */
-// app.use(errorHandlerFunction);
+app.use(errorHandlerFunction);
 /* ------------------------------------------------------- */
 
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
