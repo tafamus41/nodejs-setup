@@ -29,13 +29,13 @@ app.get("/user/:id?", function (req, res) {
   res.send({ userId: 2, userName: "John" });
 });
 
-/* -------------------------------------------------------*/
+/* -------------------------------------------------------*
 //! throw Error()
 app.get("/user/:id?", function (req, res) {
   throw Error("Hata oluştu");
   res.send({ userId: 2, userName: "John" });
 });
-/* ------------------------------------------------------- 
+/* -------------------------------------------------------*/
 app.get("/user/:id?", function (req, res) {
   try {
     req.params.id.toString();
