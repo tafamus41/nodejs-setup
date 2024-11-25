@@ -60,7 +60,7 @@ app.get("/user/:id?", function (req, res, next) {
   res.send({ userId: 2, userName: "John" });
 });
 
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 app.get("/user/:id?", function (req, res, next) {
   // res.statusCode = 400;
   try {
