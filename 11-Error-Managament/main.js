@@ -161,7 +161,7 @@ const errorHandlerFunction = (err, req, res, next) => {
   });
 };
 /* ------------------------------------------------------- */
-app.use(errorHandlerFunction);
+// app.use(errorHandlerFunction);
 /* ------------------------------------------------------- */
 
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
