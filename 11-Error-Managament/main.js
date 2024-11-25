@@ -29,12 +29,12 @@ app.get("/user/:id?", function (req, res) {
   res.send({ userId: 2, userName: "John" });
 });
 
-/* -------------------------------------------------------*/
+/* -------------------------------------------------------*
 //! throw Error()
-// app.get("/user/:id?", function (req, res) {
-//   throw Error("Hata oluştu");
-//   res.send({ userId: 2, userName: "John" });
-// });
+app.get("/user/:id?", function (req, res) {
+  throw Error("Hata oluştu");
+  res.send({ userId: 2, userName: "John" });
+});
 const errorHandlerFunction=(err,req,res,next)=>{
   res.status(400).send({isError:true,message:err.message})
 }
