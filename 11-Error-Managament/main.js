@@ -29,12 +29,15 @@ app.get("/user/:id?", function (req, res) {
   res.send({ userId: 2, userName: "John" });
 });
 
-/* -------------------------------------------------------*
+/* -------------------------------------------------------*/
 //! throw Error()
 app.get("/user/:id?", function (req, res) {
   throw Error("Hata oluştu");
   res.send({ userId: 2, userName: "John" });
 });
+const errorHandlerFunction=(err,req,res,next)=>{
+  res.status(400).send({isError:true,message:err.message})
+}
 /* -------------------------------------------------------*
 app.get("/user/:id?", function (req, res) {
   try {
@@ -46,7 +49,7 @@ app.get("/user/:id?", function (req, res) {
     res.status(400).send({ isError: true, message: "id must be string" });
   }
 });
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 app.get("/user/:id?", function (req, res, next) {
   // req.statusCode = 400;
   res.statusCode = 400;
@@ -157,6 +160,7 @@ const errorHandlerFunction = (err, req, res, next) => {
     cause: err.cause,
   });
 };
+/* ------------------------------------------------------- */
 app.use(errorHandlerFunction);
 /* ------------------------------------------------------- */
 
