@@ -72,7 +72,7 @@ app.get("/user/:id?", function (req, res, next) {
     next(error);
   }
 });
-/* ------------------------------------------------------- *
+/* ------------------------------------------------------- */
 class CustomError extends Error {
   name = "Custom Error";
   statusCode = StatusCodes.INTERNAL_SERVER_ERROR;
